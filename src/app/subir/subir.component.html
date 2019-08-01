@@ -5,25 +5,33 @@
         </div>
         <div class="row margin25">
 
-            <div class="col-md-4">
+            <div class="col-md-3">
 
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span  class="input-group-text upload"  (click)="subir()"  id="btnUpload">Upload</span>
+                        <span  class="input-group-text upload"  (click)="subir()"  id="btnUpload">Subir</span>
                     </div>
                     <div class="custom-file">
                         <form action="/api/archivo" method="post" enctype="multipart/form-data">
                             <input (change)="fileChange($event)" name="archivo"  type="file"  class="custom-file-input"  id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01">
                         </form>
-                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        <label class="custom-file-label" for="inputGroupFile01">Elegir</label>
                     </div>
+                    
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
 
             </div>
         </div>
     </div>
 </div>
+<form>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+        <div class="invalid-feedback">Example invalid custom file feedback</div>
+    </div>
+</form>

@@ -1,23 +1,39 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-    <h1>
-        Welcome to {{ title }}!
-    </h1>
-</div>
 
-<div>
-    <ul>
-        <li routerLink="/descargar">Descargar Archivo</li>
-        <li routerLink="/iniciar-sesion">Iniciar Sesion</li>
-        <li routerLink="/lista">Ver Archivos</li>
-        <li routerLink="/subir">Subir Archivo</li>
-    </ul>
-</div>
-
-<!--<app-subir></app-subir> ---- acomodar aca para enviar la info del archivo a subir -->
-<!--<app-archivo (click)="hola()"></app-archivo> ---- *ngFor="let archivo of archivos" -->
-<!-- <app-listar > [archivos]="archivos" </app-listar> -->
-<!-- <app-iniciar-sesion></app-iniciar-sesion> ---- acomodar aca para enviar la info de sesion -->
-<!-- <app-descargar [nombreArchivo]="archivoADescargar" ></app-descargar> ---- lo mismo que al resto -->
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">{{ title }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbars">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/listar">Ver Archivos</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/upload">Subir Archivo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/download">Descargar</a>
+                </li>
+            </ul>
+            <!--
+                <form class="form-inline my-2 my-md-0">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                </form>
+            -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/logIn">Iniciar Sesion</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="">Registrarse</a> <!-- Falta crear el componente y obviamente referenciarlo -->
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
 <router-outlet></router-outlet>

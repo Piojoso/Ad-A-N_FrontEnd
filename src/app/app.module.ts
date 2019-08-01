@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Route } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,10 +15,10 @@ import { ArchivosService } from './archivos.service';
  
 const routes: Route[] = [
   {path: '', component: IniciarSesionComponent},
-  {path: 'descargar', component: DescargarComponent},
-  {path: 'iniciar-sesion', component: IniciarSesionComponent},
-  {path: 'lista', component: ListarComponent},
-  {path: 'subir', component: SubirComponent}
+  {path: 'download', component: DescargarComponent},
+  {path: 'logIn', component: IniciarSesionComponent},
+  {path: 'listar', component: ListarComponent},
+  {path: 'upload', component: SubirComponent}
 ];
 
 @NgModule({
@@ -29,6 +30,7 @@ const routes: Route[] = [
     ListarComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

@@ -1,13 +1,26 @@
-<div>
-    <form (submit)="hola(inputUser, inputPass)"> <!-- acomodar el binding -->
-        <label for="user">Usuario:</label>
-        <input type="text" id="user" #inputUser/>
-        
-        <label for="pass">Contraseña:</label>
-        <input type="password" id="pass" #inputPass/>
+<form class="form-signin form-si">
+    <div class="text-center mb-4">
+        <!--<img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
+        <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
+        <p>Si no estas registrado puedes <a href="#">Registrate Aqui</a></p>
+    </div>
 
-        <button>
-            Saludo
-        </button>
-    </form>
-</div>
+    <div class="form-label-group">
+        <input type="email" id="inputEmail" class="form-control shadow-sm" placeholder="Email address" required="" autofocus="">
+        <label for="inputEmail">Email</label>
+    </div>
+      
+    <div class="form-label-group">
+        <input type="password" id="inputPassword" class="form-control shadow-sm" placeholder="Password" required="">
+        <label for="inputPassword">Contraseña</label>
+    </div>
+    <!--
+    <div class="checkbox mb-3">
+        <label>
+        <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    -->
+    <button class="btn btn-lg btn-success btn-block shadow" type="submit">Iniciar Sesion</button>
+    <!-- <p class="mt-5 mb-3 text-muted text-center">© Leonel Bongiovanni</p> -->
+</form>
