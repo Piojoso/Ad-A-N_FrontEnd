@@ -29,9 +29,14 @@ export class ArchivosService {
     return this.http.get<Archivo[]>(this.baseurl + '/archivo/').pipe(retry(1),catchError(this.errorHandl));
   }
 
-  // Descarga un archivo puntual
+  // Obtiene Info de un Archivo puntual
   obtenerArchivo(id){
-    return this.http.get<Archivo>(this.baseurl + '/archivo/' + id).pipe(retry(1),catchError(this.errorHandl));
+    return this.http.get<Archivo>(this.baseurl + '/archivo/info/' + id).pipe(retry(1),catchError(this.errorHandl));
+  }
+
+  // Descarga un Archivo puntual
+  descargarArchivo(id){
+    return this.http.get(this.baseurl + '/archivo/file/' + id, {}).pipe(retry(1), catchError(this.errorHandl));
   }
 
   // Sube un Archivo (ITS WORKING)
@@ -51,6 +56,7 @@ export class ArchivosService {
 
   // Capturador de errores si mal no estoy.
   errorHandl(error){
+    console.log(error);
     let errorMessage = '';
     if (error.error instanceof ErrorEvent){
       errorMessage = error.error.message;

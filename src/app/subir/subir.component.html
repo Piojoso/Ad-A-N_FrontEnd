@@ -4,15 +4,15 @@
             <h1>Archivo a Subir</h1>
         </div>
         <div class="row margin25">
-
             <div class="col-md-3">
-
             </div>
             <div class="col-md-6">
                 <div class="input-group">
+                    <!--
                     <div class="input-group-prepend">
                         <span  class="input-group-text upload"  (click)="subir()"  id="btnUpload">Subir</span>
                     </div>
+                    -->
                     <div class="custom-file">
                         <form action="/api/archivo" method="post" enctype="multipart/form-data">
                             <input (change)="fileChange($event)" name="archivo"  type="file"  class="custom-file-input"  id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01">
@@ -26,12 +26,16 @@
 
             </div>
         </div>
+        <div class="row" *ngFor="let item of uploadedFiles">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4 border-bottom border-left border-top p-3"><span>{{ item.name }}</span></div>
+            <div class="col-sm-4 border-bottom border-right border-top p-3">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-dark" (click)="subir()">Subir</button>
+                    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+                </div>
+            </div>      
+            <div class="col-sm-2"></div>
+        </div>
     </div>
 </div>
-<form>
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-        <div class="invalid-feedback">Example invalid custom file feedback</div>
-    </div>
-</form>

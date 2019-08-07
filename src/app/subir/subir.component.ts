@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 
 export class SubirComponent implements OnInit {
   
-  // Update Realizada con la guia de: https://blog.jscrambler.com/implementing-file-upload-using-node-and-angular/
+  // Upload Realizado con la guia de: https://blog.jscrambler.com/implementing-file-upload-using-node-and-angular/
 
   uploadedFiles: Array<File>;
 
@@ -26,7 +26,7 @@ export class SubirComponent implements OnInit {
     }
     this.servicio.subirArchivo(fromData).subscribe(data =>{
       console.log(data);
-      this.ngZone.run(()=>{this.router.navigateByUrl('/lista')})
+      this.ngZone.run(()=>{this.router.navigateByUrl('/listar')})
     })
 
   }
@@ -34,7 +34,10 @@ export class SubirComponent implements OnInit {
   fileChange(element){
     this.uploadedFiles = element.target.files;
   }
+
+  cancel() {
+    this.uploadedFiles= new Array<File>();
+  }
   
   ngOnInit() { }
-
 }

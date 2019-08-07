@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { ArchivosService  } from '../archivos.service';
 import { Archivo } from '../archivos';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-descargar',
@@ -10,32 +11,43 @@ import { Archivo } from '../archivos';
 export class DescargarComponent implements OnInit {
 
   //@Input() nombreArchivo; //Aca hay que poner el nombre del archivo que vamos a descargar
-  @ViewChild('bindingInput', { static: false }) bindingInput: ElementRef;
 
   archivo: Archivo;
-  id = 3;
+  id;
 
   constructor(private servicio: ArchivosService) { 
     
   }
 
   descargar(){
-    console.log(this.id);
+    let infoFile;
     this.servicio.obtenerArchivo(this.id).subscribe(data =>{
-      console.log(data);
-      this.archivo = data;
-    })
+      infoFile=data;
+      saveAs('192.168.1.197:3000/api/archivo/' + this.id, infoFile.name);
+    });
   }
-
-  //COMO por alguna razon el doble binding no me funciona, o hay algo que estoy haciendo mal, creo esta funcion que de hecho la vi en la
-  //mismisima pagina de angula.io
-
-  getValueForID(): any{
-    this.id = this.bindingInput.nativeElement.value;
-  }
-
 
   ngOnInit() {
   }
 
+  // Realizada con la guia de: https://www.youtube.com/watch?v=NsHgvKeAEDI
+  attachmentList:any = [];
+/*
+  constructor(private _fileService:FileService){
+
+    this.uploader.onCompleteItem = (item:any, response:any , status:any, headers:any) => {
+      this.attachmentList.push(JSON.parse(response));
+    }
+  }
+*/
+/* 
+  download(index){
+    var filename = this.attachmentList[index].uploadname;
+
+    this.servicio.obtenerArchivo(filename).subscribe(
+      data => saveAs(data, filename),
+      error => console.error(error)
+    );
+  }
+*/
 }

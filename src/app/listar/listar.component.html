@@ -1,6 +1,6 @@
 <div class="container ">
 
-  <div class="align-content-center">
+  <div class="align-content-center m-3">
     <h3>Archivos</h3>
   </div>
 
@@ -16,7 +16,7 @@
         <div class="card-body">
           <h6 class="card-title">id: {{ archivo._id }}</h6>
           <h6 class="card-subtitle mb-2 text-muted">Tamaño: {{ archivo.size }} bits</h6>
-          <p class="card-text text-muted">Agregado: </p>
+          <p class="card-text text-muted">Agregado: {{ archivo.add_Date }}</p>
           <!--
             <a href="" class="card-link btn btn-outline-dark" role="button" aria-pressed="true">Descargar</a>
             <a href="" class="card-link btn btn-outline-dark" role="button" aria-pressed="true">Ver</a>
@@ -28,9 +28,14 @@
         </div>
         
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><button class="btn btn-danger">Eliminar</button></li>
+          <li class="list-group-item">
+            <button class="btn btn-danger" (click)="Eliminar(archivo._id)" >Eliminar</button>
+          </li>
         </ul>
       </div>
     </div>
   </div>
 </div>
+
+
+

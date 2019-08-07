@@ -3,5 +3,6 @@ export interface Archivo {
     name: String,
     size: number,
     type: string,
-    location: string
+    location: string,
+    add_Date: Date
 }

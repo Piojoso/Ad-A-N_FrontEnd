@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { ArchivosService } from '../archivos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar',
@@ -12,9 +13,21 @@ export class ListarComponent implements OnInit {
 
   archivos = [];
 
-  constructor(private servicioArchivo: ArchivosService) { 
+  constructor(private servicioArchivo: ArchivosService, private ngZone:NgZone, private router:Router) { 
+    this.listarItems();
+  }
+
+  listarItems(){
     this.servicioArchivo.obtenerArchivos().subscribe(data => {
       this.archivos = data;
+      console.log(data);
+    });
+  }
+
+  Eliminar(id) {
+    this.servicioArchivo.borrarArchivo(id).subscribe(data=>{
+      console.log(data);
+      this.listarItems();
     });
   }
 
