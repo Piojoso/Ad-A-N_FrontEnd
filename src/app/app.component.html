@@ -19,11 +19,12 @@
                     <a class="nav-link" routerLink="/download">Descargar</a>
                 </li>
             </ul>
-            <!--
-                <form class="form-inline my-2 my-md-0">
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                </form>
-            -->
+            <div class="justify-content-md-center">
+                <div class="form-inline my-2 my-md-0">
+                    <input class="form-control mr-sm-2" type="search" (change)="nombre = $event.target.value" placeholder="Buscar por Nombre" aria-label="Buscar">
+                    <button class="btn btn-outline-light my-2 my-sm-0" (click)="buscar(nombre)">Buscar</button>
+                </div>
+            </div>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" routerLink="/logIn">Iniciar Sesion</a>

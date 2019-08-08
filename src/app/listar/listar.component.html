@@ -8,7 +8,6 @@
     <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let archivo of archivos">
 
       <div class="card mb-4 border-dark shadow-sm">
-        <!-- <img src="..." class="card-img-top" alt="...">  style="width: 18rem;" -->
         <h6 class="card-header">
           {{ archivo.name }}
         </h6>
@@ -17,13 +16,11 @@
           <h6 class="card-title">id: {{ archivo._id }}</h6>
           <h6 class="card-subtitle mb-2 text-muted">Tamaño: {{ archivo.size }} bits</h6>
           <p class="card-text text-muted">Agregado: {{ archivo.add_Date }}</p>
-          <!--
-            <a href="" class="card-link btn btn-outline-dark" role="button" aria-pressed="true">Descargar</a>
-            <a href="" class="card-link btn btn-outline-dark" role="button" aria-pressed="true">Ver</a>
-          -->
           <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Descargar</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+            <button type="button" (click)="descargar(archivo._id)" class="btn btn-sm btn-outline-success">Descargar</button>
+            <!--
+              <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+            -->
           </div>
         </div>
         

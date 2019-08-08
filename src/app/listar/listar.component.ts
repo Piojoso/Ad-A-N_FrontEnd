@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArchivosService } from '../archivos.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Archivo } from '../archivos';
 
 @Component({
   selector: 'app-listar',
@@ -9,24 +10,43 @@ import { Router } from '@angular/router';
 })
 export class ListarComponent implements OnInit {
 
-  //@Input() archivos;
-
   archivos = [];
+  Ids = null;
 
-  constructor(private servicioArchivo: ArchivosService, private ngZone:NgZone, private router:Router) { 
-    this.listarItems();
+  constructor(private servicioArchivo: ArchivosService, private router:ActivatedRoute) { 
+    this.Ids = router.snapshot.params.Ids;
+    console.log(this.Ids);
+    if(this.Ids != null){
+      this.buscar(this.Ids);
+    }else{
+      this.listarItems();
+    }
   }
 
   listarItems(){
     this.servicioArchivo.obtenerArchivos().subscribe(data => {
       this.archivos = data;
-      console.log(data);
     });
+  }
+
+  buscar(Ids){
+    let i = 0;
+    let array = Ids.split(',')
+    this.archivos = [];
+    while (i < array.length){
+      this.servicioArchivo.obtenerArchivo(array[i]).subscribe((data)=>{
+        this.archivos.push(data);
+      })
+      i++;
+    }
+  }
+
+  descargar(id){
+    this.servicioArchivo.descargarArchivo(id);
   }
 
   Eliminar(id) {
     this.servicioArchivo.borrarArchivo(id).subscribe(data=>{
-      console.log(data);
       this.listarItems();
     });
   }

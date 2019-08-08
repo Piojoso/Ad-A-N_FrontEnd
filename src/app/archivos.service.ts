@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { saveAs } from 'file-saver';
 
 import { Archivo } from './archivos';
 
@@ -24,7 +25,7 @@ export class ArchivosService {
     })
   }
   
-  // Lista todos los Archivos (ITS WORKINKG)
+  // Lista todos los Archivos
   obtenerArchivos(){
     return this.http.get<Archivo[]>(this.baseurl + '/archivo/').pipe(retry(1),catchError(this.errorHandl));
   }
@@ -34,12 +35,21 @@ export class ArchivosService {
     return this.http.get<Archivo>(this.baseurl + '/archivo/info/' + id).pipe(retry(1),catchError(this.errorHandl));
   }
 
-  // Descarga un Archivo puntual
-  descargarArchivo(id){
-    return this.http.get(this.baseurl + '/archivo/file/' + id, {}).pipe(retry(1), catchError(this.errorHandl));
+  // Obtiene toda la informacion de los archivos que hagan match con el texto enviado en el nombre
+  buscarArchivo(nombre){
+    return this.http.get<Archivo[]>(this.baseurl + '/archivo/find/' + nombre).pipe(retry(1), catchError(this.errorHandl));
   }
 
-  // Sube un Archivo (ITS WORKING)
+  // Descarga un Archivo puntual
+  descargarArchivo(id){
+    let infoFile;
+    this.obtenerArchivo(id).subscribe(data =>{
+      infoFile=data;
+      saveAs('192.168.1.197:3000/api/archivo/' + id, infoFile.name);
+    });
+  }
+
+  // Sube un Archivo
   subirArchivo(data){
     return this.http.post<Archivo>(this.baseurl + '/archivo/', data/*, this.httpOption*/).pipe(retry(1),catchError(this.errorHandl));
   }
