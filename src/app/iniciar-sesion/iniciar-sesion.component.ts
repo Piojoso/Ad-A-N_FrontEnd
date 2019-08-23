@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../usuario.service';
+import { Usuario } from '../usuario';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-iniciar-sesion',
@@ -7,14 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IniciarSesionComponent implements OnInit {
 
-    constructor() { }
+    email;
+    pass;
+
+    err;
+
+    constructor(private service:UsuarioService, private router:Router) { 
+        /*
+        */
+    }
 
     ngOnInit() {
     }
 
-    hola(inputUser, inputPass){
-        //inputUser.value tiene el nombre de usuario ingresado
-        //inputPass.value tiene la contraseña ingresada
-        return false;
+    showError(err){
+        this.err = null;
+        this.err = err;
+    }
+
+    close(){
+        this.err = null;
+    }
+
+    login(){
+        this.service.logIn({email: this.email, password: this.pass}).subscribe(data =>{
+            if(data) {
+                console.log(data);
+                localStorage.setItem('token', data.token.toString());
+                this.router.navigateByUrl('/listar');
+            }
+        }, err =>{
+            this.showError(err);
+        })
+        
     }
 }

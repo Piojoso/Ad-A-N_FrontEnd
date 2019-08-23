@@ -10,6 +10,7 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
 import { SubirComponent } from './subir/subir.component';
 import { DescargarComponent } from './descargar/descargar.component';
 import { ListarComponent } from './listar/listar.component';
+import { RegistrarseComponent } from './registrarse/registrarse.component';
 
 import { ArchivosService } from './archivos.service';
  
@@ -19,7 +20,8 @@ const routes: Route[] = [
   {path: 'logIn', component: IniciarSesionComponent},
   {path: 'listar', component: ListarComponent},
   {path: 'listar/:Ids', component: ListarComponent},
-  {path: 'upload', component: SubirComponent}
+  {path: 'upload', component: SubirComponent},
+  {path: 'logUp', component: RegistrarseComponent}
 ];
 
 @NgModule({
@@ -28,7 +30,8 @@ const routes: Route[] = [
     IniciarSesionComponent,
     SubirComponent,
     DescargarComponent,
-    ListarComponent
+    ListarComponent,
+    RegistrarseComponent
   ],
   imports: [
     NgbModule,

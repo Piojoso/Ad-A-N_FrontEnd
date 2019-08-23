@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArchivosService } from '../archivos.service';
 import { ActivatedRoute } from '@angular/router';
-import { Archivo } from '../archivos';
 
 @Component({
   selector: 'app-listar',
@@ -15,7 +14,6 @@ export class ListarComponent implements OnInit {
 
   constructor(private servicioArchivo: ArchivosService, private router:ActivatedRoute) { 
     this.Ids = router.snapshot.params.Ids;
-    console.log(this.Ids);
     if(this.Ids != null){
       this.buscar(this.Ids);
     }else{

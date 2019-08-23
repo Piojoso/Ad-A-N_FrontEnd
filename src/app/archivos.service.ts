@@ -14,9 +14,7 @@ export class ArchivosService {
   // Base url
   baseurl = 'http://192.168.1.197:3000/api';
 
-  constructor(private http: HttpClient) { 
-    //console.log('Service is now Working');
-  }
+  constructor(private http: HttpClient) { }
 
   // Header configuration (Solo para que cors me deje pasar, aun no esta el temita de los tokens)
   httpOption = {
