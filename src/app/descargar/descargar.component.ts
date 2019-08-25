@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArchivosService  } from '../archivos.service';
 import { Archivo } from '../archivos';
+import { ShowErrorService } from '../show-error.service';
 
 @Component({
   selector: 'app-descargar',
@@ -12,13 +13,13 @@ export class DescargarComponent implements OnInit {
   archivo: Archivo = null;
   id = null;
 
-  constructor(private servicio: ArchivosService) { 
-    
-  }
+  constructor(private servicio: ArchivosService, private showError: ShowErrorService) { }
 
   buscar(id){
     this.servicio.obtenerArchivo(id).subscribe(data=>{
       this.archivo = data;
+    }, err => {
+      this.showError.dispatchError(err);
     });
   }
 
@@ -31,6 +32,5 @@ export class DescargarComponent implements OnInit {
     this.id = null;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 }
