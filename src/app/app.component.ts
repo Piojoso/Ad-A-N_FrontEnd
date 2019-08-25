@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ArchivosService } from './archivos.service';
 import { Router } from '@angular/router';
+import { ShowErrorService } from './show-error.service';
+import { async } from '@angular/core/testing';
 
 @Component({
     selector: 'app-root',
@@ -12,7 +14,10 @@ export class AppComponent {
     title = 'Ad-A-N';
     nombre:string = "";
 
-    constructor(private servicio:ArchivosService, private router:Router) {
+    public error$;
+    
+
+    constructor(private servicio:ArchivosService, private router:Router, private showError:ShowErrorService) {
 
     }
     
@@ -33,6 +38,6 @@ export class AppComponent {
     }
 
     ngOnInit() {
-
+        this.error$ = this.showError.select$();
     }
 ;}

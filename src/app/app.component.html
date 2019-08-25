@@ -36,5 +36,14 @@
         </div>
     </div>
 </nav>
+
+<div class="container mt-3">    
+    <div class="alert alert-danger alert-dismissible fade show m-0" role="alert" *ngFor="let error of error$ | async">
+        {{ error.error.message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
     
 <router-outlet></router-outlet>

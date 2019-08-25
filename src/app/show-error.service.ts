@@ -15,7 +15,7 @@ export class ShowErrorService {
   public select$ = () => this.errors$.asObservable();
 
   public dispatchError(error){
-    this.errors.push({...error});
+    this.errors[0] = {...error};
     this.errors$.next(this.select());
   }
 }
