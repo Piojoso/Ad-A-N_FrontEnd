@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
-
 import { Usuario } from './usuario';
 
 @Injectable({
@@ -22,23 +19,10 @@ export class UsuarioService {
   }
 
   logUp(data){
-    return this.http.post<Usuario>(this.baseUrl + '/signup', data)/*.pipe(retry(1),catchError(this.errorHandl));*/
+    return this.http.post<Usuario>(this.baseUrl + '/signup', data)
   }
 
   logIn(data){
-    return this.http.post<Usuario>(this.baseUrl + '/signin', data)/*.pipe(retry(0),catchError(this.errorHandl));*/
-  }
-
-  errorHandl(error){
-    console.log(error);
-    console.log(error.error);
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent){
-      errorMessage = error.error.message;
-    }else{
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    console.log(errorMessage);
-    return throwError(errorMessage);
+    return this.http.post<Usuario>(this.baseUrl + '/signin', data)
   }
 }
