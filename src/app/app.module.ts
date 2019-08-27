@@ -19,7 +19,7 @@ const routes: Route[] = [
   {path: 'download', component: DescargarComponent},
   {path: 'logIn', component: IniciarSesionComponent},
   {path: 'listar', component: ListarComponent},
-  {path: 'listar/:Ids', component: ListarComponent},
+  {path: 'listar/search', component: ListarComponent},
   {path: 'upload', component: SubirComponent},
   {path: 'logUp', component: RegistrarseComponent}
 ];

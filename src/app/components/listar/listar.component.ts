@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ArchivosService } from '../../services/archivos/archivos.service';
 import { ActivatedRoute } from '@angular/router';
 import { ShowErrorService } from '../../services/showError/show-error.service';
+import { SearchResultService } from 'src/app/services/searchResults/search-result.service';
+import { async } from 'q';
 
 @Component({
   selector: 'app-listar',
@@ -11,21 +13,14 @@ import { ShowErrorService } from '../../services/showError/show-error.service';
 export class ListarComponent implements OnInit {
 
   archivos = [];
-  Ids = null;
+
+  public ids$;
 
   constructor(
     private servicioArchivo: ArchivosService, 
     private router: ActivatedRoute,
-    private showError: ShowErrorService) {
-    
-    // esto pronto desaparecera de aca (tengo pensado hacer un servicio para compartir esta info.), pero por ahora se queda.
-    this.Ids = router.snapshot.params.Ids;
-    if(this.Ids != null){
-      this.buscar(this.Ids);
-    }else{
-      this.listarItems();
-    }
-  }
+    private showError: ShowErrorService,
+    private searchResult: SearchResultService) { }
 
   listarItems(){
     this.servicioArchivo.obtenerArchivos().subscribe(
@@ -37,19 +32,16 @@ export class ListarComponent implements OnInit {
     );
   }
 
-  buscar(Ids){
-    let i = 0;
-    let array = Ids.split(',')
-    this.archivos = [];
-    while (i < array.length){
-      this.servicioArchivo.obtenerArchivo(array[i]).subscribe(
+  buscar(){
+    let array = this.ids$.source._value;
+    for (let id of array) {
+      this.servicioArchivo.obtenerArchivo(id).subscribe(
         data=>{
           this.archivos.push(data);
         }, err => {
           this.dispatchError(err);
         }
       );
-      i++;
     }
   }
 
@@ -72,6 +64,11 @@ export class ListarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ids$ = this.searchResult.select$();
+    console.log('Esta por iniciar el buscar...');
+    if(this.router.snapshot.url.length > 1)
+      this.buscar();
+    else
+      this.listarItems();
   }
-
 }
