@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ArchivosService  } from '../archivos.service';
-import { Archivo } from '../archivos';
-import { ShowErrorService } from '../show-error.service';
+import { ArchivosService  } from '../../services/archivos/archivos.service';
+import { Archivo } from '../../interfaces/archivos';
+import { ShowErrorService } from '../../services/showError/show-error.service';
 
 @Component({
   selector: 'app-descargar',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ArchivosService } from '../archivos.service';
+import { ArchivosService } from '../../services/archivos/archivos.service';
 import { ActivatedRoute } from '@angular/router';
-import { ShowErrorService } from '../show-error.service';
+import { ShowErrorService } from '../../services/showError/show-error.service';
 
 @Component({
   selector: 'app-listar',

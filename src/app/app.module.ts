@@ -6,13 +6,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
-import { SubirComponent } from './subir/subir.component';
-import { DescargarComponent } from './descargar/descargar.component';
-import { ListarComponent } from './listar/listar.component';
-import { RegistrarseComponent } from './registrarse/registrarse.component';
+import { IniciarSesionComponent } from './components/iniciar-sesion/iniciar-sesion.component';
+import { SubirComponent } from './components/subir/subir.component';
+import { DescargarComponent } from './components/descargar/descargar.component';
+import { ListarComponent } from './components/listar/listar.component';
+import { RegistrarseComponent } from './components/registrarse/registrarse.component';
 
-import { ArchivosService } from './archivos.service';
+import { ArchivosService } from './services/archivos/archivos.service';
  
 const routes: Route[] = [
   {path: '', component: IniciarSesionComponent},

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ArchivosService } from './archivos.service';
+import { ArchivosService } from './services/archivos/archivos.service';
 import { Router } from '@angular/router';
-import { ShowErrorService } from './show-error.service';
+import { ShowErrorService } from './services/showError/show-error.service';
 import { async } from '@angular/core/testing';
 
 @Component({

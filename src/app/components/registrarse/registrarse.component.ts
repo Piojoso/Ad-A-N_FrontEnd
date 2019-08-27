@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../usuario.service';
+import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Router } from '@angular/router';
-import { ShowErrorService } from '../show-error.service';
+import { ShowErrorService } from '../../services/showError/show-error.service';
 
 @Component({
   selector: 'app-registrarse',

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { saveAs } from 'file-saver';
 
-import { Archivo } from './archivos';
-import { ShowErrorService } from './show-error.service';
+import { Archivo } from '../../interfaces/archivos';
+import { ShowErrorService } from '../showError/show-error.service';
 
 @Injectable({
   providedIn: 'root'
