@@ -1,38 +1,37 @@
-<div class="container ">
-
-  <div class="align-content-center m-3">
-    <h3>Archivos</h3>
-  </div>
-
-  <div class="row text-center" >
-    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let archivo of archivos">
-
-      <div class="card mb-4 border-dark shadow-sm">
-        <h6 class="card-header">
-          {{ archivo.name }}
-        </h6>
-        
-        <div class="card-body">
-          <h6 class="card-title">id: {{ archivo._id }}</h6>
-          <h6 class="card-subtitle mb-2 text-muted">Tamaño: {{ archivo.size }} bits</h6>
-          <p class="card-text text-muted">Agregado: {{ archivo.add_Date }}</p>
-          <div class="btn-group">
-            <button type="button" (click)="descargar(archivo._id)" class="btn btn-sm btn-outline-success">Descargar</button>
-            <!--
-              <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-            -->
+<div class="container">
+  <div class="container-fluid">
+    <div class="row card p-3">
+      <div class="mt-1">
+        <h3>Archivos</h3>
+      </div>
+      <hr>
+      <div class="row" >
+        <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let archivo of archivos">
+          <div class="card border-dark shadow-sm">
+            <h6 class="card-header">{{ archivo.name }}</h6>
+            <div class="card-body">
+              <h6 class="card-title">Id: {{ archivo._id }}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">Tamaño: {{ archivo.size }} bits</h6>
+              <p class="card-text text-muted">Agregado: {{ archivo.add_Date }}</p>
+              <div class="btn-group">
+                <button type="button" (click)="descargar(archivo._id)" class="btn btn-sm btn-dark">Descargar</button>
+                <!--
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                -->
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <button class="btn btn-danger" (click)="Eliminar(archivo._id)" >Eliminar</button>
+              </li>
+            </ul>
           </div>
         </div>
-        
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <button class="btn btn-danger" (click)="Eliminar(archivo._id)" >Eliminar</button>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
 </div>
-
-
-
+  
+  
+  
+  
