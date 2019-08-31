@@ -24,8 +24,10 @@ export class RegistrarseComponent implements OnInit {
     if(this.evaluar() == true){
       this.service.logUp({email:this.email, userName: this.userName, password: this.pass}).subscribe(
         data => {
-          // Pronto el token dejara de guardarse en el local storage (Pienso ponerlo en un service y que de ahi lo obtengan todos los componentes.)
-          localStorage.setItem('token', data.token.toString());
+          if(localStorage.getItem('token')){
+            localStorage.removeItem('token');
+        }
+        localStorage.setItem('token', data.token.toString());
           this.router.navigateByUrl("/listar");
         }, err => {
           this.showError.dispatchError(err);

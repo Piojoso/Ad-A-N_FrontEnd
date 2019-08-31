@@ -24,6 +24,9 @@ export class IniciarSesionComponent implements OnInit {
     login() {
         this.service.logIn({email: this.email, password: this.pass}).subscribe(
             data =>{
+                if(localStorage.getItem('token')){
+                    localStorage.removeItem('token');
+                }
                 localStorage.setItem('token', data.token.toString());
                 this.router.navigateByUrl('/listar');
             }, err =>{
