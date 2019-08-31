@@ -18,23 +18,23 @@ export class ArchivosService {
   // Header configuration (Solo para que cors me deje pasar, aun no esta el temita de los tokens)
   httpOption = {
     headers: new HttpHeaders({
-      'Content-Type':'application/json'
+      authorization: 'bearer ' + localStorage.getItem('token')
     })
   }
   
   // Lista todos los Archivos
   obtenerArchivos(){
-    return this.http.get<Archivo[]>(this.baseurl + '/archivo/')
+    return this.http.get<Archivo[]>(this.baseurl + '/archivo/', this.httpOption);
   }
 
   // Obtiene Info de un Archivo puntual
   obtenerArchivo(id){
-    return this.http.get<Archivo>(this.baseurl + '/archivo/info/' + id)
+    return this.http.get<Archivo>(this.baseurl + '/archivo/info/' + id, this.httpOption);
   }
 
   // Obtiene toda la informacion de los archivos que hagan match con el texto enviado en el nombre
   buscarArchivo(nombre){
-    return this.http.get<Archivo[]>(this.baseurl + '/archivo/find/' + nombre)
+    return this.http.get<Archivo[]>(this.baseurl + '/archivo/find/' + nombre, this.httpOption);
   }
 
   // Descarga un Archivo puntual
@@ -52,17 +52,17 @@ export class ArchivosService {
 
   // Sube un Archivo
   subirArchivo(data){
-    return this.http.post<Archivo>(this.baseurl + '/archivo/', data)
+    return this.http.post<Archivo>(this.baseurl + '/archivo/', data, this.httpOption);
   }
 
   // Futuro actualizador de archivos...
   actualizarArchivo(id, data){
-    return this.http.put<Archivo>(this.baseurl + '/archivo/' + id, JSON.stringify(data), this.httpOption)
+    return this.http.put<Archivo>(this.baseurl + '/archivo/' + id, JSON.stringify(data), this.httpOption);
   }
 
   // Borra un archivo
   borrarArchivo(id){
-    return this.http.delete<Archivo>(this.baseurl + '/archivo/' + id, this.httpOption)
+    return this.http.delete<Archivo>(this.baseurl + '/archivo/' + id, this.httpOption);
   }
 
 }
