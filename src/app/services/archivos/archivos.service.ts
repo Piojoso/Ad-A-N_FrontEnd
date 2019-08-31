@@ -21,19 +21,28 @@ export class ArchivosService {
       authorization: 'bearer ' + localStorage.getItem('token')
     })
   }
+
+  private hayToken(){
+    this.httpOption.headers = new HttpHeaders({
+      authorization: 'bearer ' + localStorage.getItem('token')
+    });
+  }
   
   // Lista todos los Archivos
   obtenerArchivos(){
+    this.hayToken();
     return this.http.get<Archivo[]>(this.baseurl + '/archivo/', this.httpOption);
   }
 
   // Obtiene Info de un Archivo puntual
   obtenerArchivo(id){
+    this.hayToken();
     return this.http.get<Archivo>(this.baseurl + '/archivo/info/' + id, this.httpOption);
   }
 
   // Obtiene toda la informacion de los archivos que hagan match con el texto enviado en el nombre
   buscarArchivo(nombre){
+    this.hayToken();
     return this.http.get<Archivo[]>(this.baseurl + '/archivo/find/' + nombre, this.httpOption);
   }
 
@@ -52,16 +61,19 @@ export class ArchivosService {
 
   // Sube un Archivo
   subirArchivo(data){
+    this.hayToken();
     return this.http.post<Archivo>(this.baseurl + '/archivo/', data, this.httpOption);
   }
 
   // Futuro actualizador de archivos...
   actualizarArchivo(id, data){
+    this.hayToken();
     return this.http.put<Archivo>(this.baseurl + '/archivo/' + id, JSON.stringify(data), this.httpOption);
   }
 
   // Borra un archivo
   borrarArchivo(id){
+    this.hayToken();
     return this.http.delete<Archivo>(this.baseurl + '/archivo/' + id, this.httpOption);
   }
 
