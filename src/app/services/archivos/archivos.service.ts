@@ -27,7 +27,7 @@ export class ArchivosService {
       authorization: 'bearer ' + localStorage.getItem('token')
     });
   }
-  
+
   // Lista todos los Archivos
   obtenerArchivos(){
     this.hayToken();
@@ -52,7 +52,7 @@ export class ArchivosService {
     this.obtenerArchivo(id).subscribe(
       data => {
         infoFile = data;
-        saveAs('192.168.1.197:3000/api/archivo/' + id, infoFile.name);
+        saveAs('http://192.168.1.197:3000/api/archivo/file/' + id, infoFile.name);
       }, err =>{
         this.showError.dispatchError(err);
       }
