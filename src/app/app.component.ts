@@ -10,20 +10,26 @@ import { SearchResultService  } from './services/searchResults/search-result.ser
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    
+
     title = 'Ad-A-N';
     nombre:string = "";
+    loged:boolean = false;
 
     public error$;
-    
+
 
     constructor(
-        private servicio:ArchivosService, 
-        private router:Router, 
+        private servicio:ArchivosService,
+        private router:Router,
         private showError:ShowErrorService,
         private searchResult:SearchResultService
-        ) { }
-    
+    )
+    {
+        if(localStorage.getItem('token')){
+            this.loged = true;
+        }
+    }
+
     buscar(nombre){
         this.servicio.buscarArchivo(nombre).subscribe(
             data => {

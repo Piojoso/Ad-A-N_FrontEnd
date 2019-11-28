@@ -3,7 +3,6 @@ import { ArchivosService } from '../../services/archivos/archivos.service';
 import { ActivatedRoute } from '@angular/router';
 import { ShowErrorService } from '../../services/showError/show-error.service';
 import { SearchResultService } from 'src/app/services/searchResults/search-result.service';
-import { async } from 'q';
 
 @Component({
   selector: 'app-listar',
@@ -65,7 +64,6 @@ export class ListarComponent implements OnInit {
 
   ngOnInit() {
     this.ids$ = this.searchResult.select$();
-    console.log('Esta por iniciar el buscar...');
     if(this.router.snapshot.url.length > 1)
       this.buscar();
     else
