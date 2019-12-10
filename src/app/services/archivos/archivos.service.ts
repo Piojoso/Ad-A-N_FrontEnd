@@ -68,7 +68,7 @@ export class ArchivosService {
   // Futuro actualizador de archivos...
   actualizarArchivo(id, data){
     this.hayToken();
-    return this.http.put<Archivo>(this.baseurl + '/archivo/' + id, JSON.stringify(data), this.httpOption);
+    return this.http.put<Archivo>(this.baseurl + '/archivo/' + id, data, this.httpOption);
   }
 
   // Borra un archivo

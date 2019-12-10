@@ -5,15 +5,17 @@ import { RouterModule, Route } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { IniciarSesionComponent } from './components/iniciar-sesion/iniciar-sesion.component';
 import { SubirComponent } from './components/subir/subir.component';
 import { DescargarComponent } from './components/descargar/descargar.component';
 import { ListarComponent } from './components/listar/listar.component';
 import { RegistrarseComponent } from './components/registrarse/registrarse.component';
+import { ActualizarComponent } from './components/actualizar/actualizar.component';
 
 import { ArchivosService } from './services/archivos/archivos.service';
- 
+
 const routes: Route[] = [
   {path: '', component: IniciarSesionComponent},
   {path: 'download', component: DescargarComponent},
@@ -21,6 +23,7 @@ const routes: Route[] = [
   {path: 'listar', component: ListarComponent},
   {path: 'listar/search', component: ListarComponent},
   {path: 'upload', component: SubirComponent},
+  {path: 'update/:fileID', component: ActualizarComponent },
   {path: 'logUp', component: RegistrarseComponent}
 ];
 
@@ -31,7 +34,8 @@ const routes: Route[] = [
     SubirComponent,
     DescargarComponent,
     ListarComponent,
-    RegistrarseComponent
+    RegistrarseComponent,
+    ActualizarComponent
   ],
   imports: [
     NgbModule,

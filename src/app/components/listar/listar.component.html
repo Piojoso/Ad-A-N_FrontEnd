@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="container-fluid">
+  <div class="container-fluid pt-5">
     <div class="row card p-3">
       <div class="mt-1">
         <h3>Archivos</h3>
@@ -15,14 +15,12 @@
               <p class="card-text text-muted">Agregado: {{ archivo.add_Date }}</p>
               <div class="btn-group">
                 <button type="button" (click)="descargar(archivo._id)" class="btn btn-sm btn-dark">Descargar</button>
-                <!--
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-                -->
+                <button type="button" routerLink="/update/{{ archivo._id }}" class="btn btn-sm btn-outline-secondary">Actualizar</button>
               </div>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <button class="btn btn-danger" (click)="Eliminar(archivo._id)" >Eliminar</button>
+                <button class="btn btn-danger" (click)="Eliminar(archivo._id)">Eliminar</button>
               </li>
             </ul>
           </div>
@@ -31,7 +29,6 @@
     </div>
   </div>
 </div>
-  
-  
-  
-  
+
+
+
