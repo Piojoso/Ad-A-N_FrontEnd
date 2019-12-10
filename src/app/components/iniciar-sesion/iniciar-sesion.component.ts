@@ -14,8 +14,8 @@ export class IniciarSesionComponent implements OnInit {
     pass;
 
     constructor(
-        private service:UsuarioService, 
-        private router:Router, 
+        private service:UsuarioService,
+        private router:Router,
         private showError:ShowErrorService
         ) { }
 
@@ -29,9 +29,19 @@ export class IniciarSesionComponent implements OnInit {
                 }
                 localStorage.setItem('token', data.token.toString());
                 this.router.navigateByUrl('/listar');
+                window.location.reload();
             }, err =>{
                 this.showError.dispatchError(err);
             }
         );
+    }
+
+    emailValido = /^\w+@\w+\.\w{3}(\.\w{2})?$/;
+
+    validarEmail(input) {
+        this.email = input.value;
+        if(!this.emailValido.test(this.email)){
+            this.showError.dispatchError({error:{message:'Email Invalido'}})
+        }
     }
 }
