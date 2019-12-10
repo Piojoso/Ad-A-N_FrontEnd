@@ -3,6 +3,7 @@ import { ArchivosService } from './services/archivos/archivos.service';
 import { Router } from '@angular/router';
 import { ShowErrorService } from './services/showError/show-error.service';
 import { SearchResultService  } from './services/searchResults/search-result.service';
+import { ResourceLoader } from '@angular/compiler';
 
 @Component({
     selector: 'app-root',
@@ -43,6 +44,11 @@ export class AppComponent {
             this.showError.dispatchError(err);
             }
         );
+    }
+
+    cerrarSesion() {
+        localStorage.removeItem('token');
+        window.location.reload();
     }
 
     ngOnInit() {
